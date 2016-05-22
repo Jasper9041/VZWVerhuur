@@ -5,10 +5,10 @@
             $(".categorieBtn").removeClass("active");
             $(this).addClass("active");
             console.log(this);
-            //$.post(this.action, $(this).serialize(),
-            //    function(data) {
-            //        $("#producten").html(data);
-            //    });
+            $.post(this.action, $(this).serialize(),
+                function(data) {
+                    $("#producten").html(data);
+                });
         });
     }
 }

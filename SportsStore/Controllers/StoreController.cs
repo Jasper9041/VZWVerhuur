@@ -45,6 +45,16 @@ namespace SportsStore.Controllers
 
             return View(products.ToPagedList(pageNumber,pageSize));
         }
+        public ActionResult Details(int categoryId)
+        {
+            Product product = productRepository.FindById(categoryId);
+            if(product == null || !product.InStock)
+            {
+                TempData["info"] = "Het product bestaat niet of is momenteel niet beschikbaar.";
+                return View("Index");
+            }
+            return View(product);
+        }
         private SelectList GetCategoriesSelectList(int selectedValue = 0)
         {
             return new SelectList(categoryRepository.FindAll().OrderBy(g => g.Name),
