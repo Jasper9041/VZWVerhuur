@@ -21,7 +21,7 @@ namespace SportsStore.Controllers
             this.categoryRepository = categoryRepository;
         }
 
-        public ActionResult Index(int? page , string categoryId = null)
+        public ActionResult Index(int? page , string categoryId)
         {
             Category category;
             IEnumerable<Product> products = productRepository.FindAll().Where(i => i.InStock == true).OrderBy(p => p.Name).ToList();

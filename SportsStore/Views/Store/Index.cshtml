@@ -28,13 +28,13 @@
 </div>
 
 }*@
-<div class="btn-group categorieBtn" role="group" aria-label="">
+<div class="btn-group" role="group" aria-label="">
    
         @Html.ActionLink("Alle categorieën", "Index", 0, new { @class = "btn btn-default " })
         @foreach (var category in ViewBag.Alle)
         {
             @*@Html.ActionLink((string)category.Name, "Index", new { categoryId = category.CategoryId }, new { @class = "btn btn-default" })*@
-            <input type="button" name="categoryId" class=" btn btn-default categorieBtn" value="@category.Name"/>
+            <input type="button" name="categoryId" class="btn btn-default categorieBtn" value="@category.Name"/>
             @*@Html.*@
 
         }
@@ -52,7 +52,7 @@ Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) van @Model.P
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/ajax.js"></script>
 
 
