@@ -1,0 +1,104 @@
+﻿@using SportsStore.Models.Domain
+@model SportsStore.ViewModels.CheckOutViewModel
+
+@{
+    ViewBag.Title = "Bevestigen";
+    
+}
+
+<h2>Aanvraag bevestigen</h2>
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Price)
+        </th>
+
+
+    </tr>
+
+
+    @foreach (var item in Model.Cartlines)
+    {
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @($"{item.Total:0.00€}")
+                @*@Html.DisplayFor(modelItem => item.Total)*@
+            </td>
+
+        </tr>
+
+    }
+
+
+
+
+</table>
+
+@using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post, new { CheckOutViewModel = Model }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.HiddenFor(l => l.Cartlines);
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDatumHuur, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.StartDatumHuur, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.StartDatumHuur, "", new {@class = "text-danger"})
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EindDatumHuur, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.EindDatumHuur, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.EindDatumHuur, "", new {@class = "text-danger"})
+            </div>
+        </div>
+    </div>
+
+        <div class="form-group">
+<div class="col-sm-offset-2 col-md-10">
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(model => model.Voorwaarden)
+            @*@Html.DisplayNameFor(model => model.Voorwaarden)*@
+            @*@Html.ActionLink("Ik ben akkoord met de algemene voorwaarden","About","Home",new {target = "_blank"})*@
+
+         Ik ben akkoord met de <a href="@Url.Action("About","Home")" target="blank">algemene voorwaarden.</a>
+        </label>
+        @Html.ValidationMessageFor(model => model.Voorwaarden, "", new { @class = "text-danger" })
+    </div>
+</div>
+            </div>
+
+            <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type = "submit" value="Aanvraag versturen" class="btn btn-default" />
+            </div>
+        </div>
+}
+
+

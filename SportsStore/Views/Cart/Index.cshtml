@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SportsStore.Models.Domain.CartLine>
+
+@{
+    ViewBag.Title = "SportsStore : Your cart";
+    ViewBag.Active = "Cart";
+}
+<h2>Your cart</h2>
+
+
+<table class="table  table-striped">
+        <thead>
+            <tr>
+                <th class="text-right">Aantal</th>
+                <th>Naam</th>
+                <th class="text-right">Richtprijs</th>
+                <th class="text-right">Subtotaal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>  
+    @foreach (var line in Model) {
+        <tr>
+            <td class="text-right">@line.Quantity</td>
+            <td>@line.Product.Name</td>
+            <td  class="text-right">@line.Product.Price.ToString("c")</td>
+            <td  class="text-right">@line.Total.ToString("c")</td>
+            <td>@using (Html.BeginForm())
+                      {
+                    <button type="submit" formaction="Cart/Plus/@line.Product.ProductId" class="btn  btn-xs"><span class="glyphicon-plus glyphicon"></span></button>
+                    <button type="submit" formaction="Cart/Min/@line.Product.ProductId" class="btn  btn-xs"><span class="glyphicon-minus glyphicon"></span></button>
+                    <button type="submit" formaction="Cart/Remove/@line.Product.ProductId" class="btn  btn-xs"><span class="glyphicon-remove glyphicon"></span></button>
+
+            }</td>
+        </tr>
+        }
+       </tbody>
+       <tfoot>
+       <tr>
+        <td colspan="3"  style="text-align: right">Totaal :</td>
+        <td  style="text-align: right">@ViewBag.Total.ToString("c")</td>
+        <td></td>
+       </tr>
+      
+       </tfoot>
+    </table>
+     <div align="center" class="actionButtons">
+            @Html.ActionLink("Nog zaken toevoegen", "Index", "Store", null, new {@class="btn btn-default"}) 
+            @Html.ActionLink("Aanvraag versturen", "CheckOut", "Cart", null, new {@class="btn btn-default"}) 
+       </div>
+<p>Alle prijzen zijn richtprijzen.</p>
+  
+

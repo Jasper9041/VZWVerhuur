@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SportsStore.Models.Domain.Cart">
+    <Position X="7.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAEAAAEAAAAEmAACIAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\Domain\Cart.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="lines" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SportsStore.Models.Domain.CartLine">
+    <Position X="4" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\Domain\CartLine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SportsStore.Models.Domain.Category">
+    <Position X="0.5" Y="5" Width="2.5" />
+    <AssociationLine Name="Products" Type="SportsStore.Models.Domain.Product">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-5.28" Y="0.089" Height="0.182" Width="4" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAgAAAAAAQAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Domain\Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SportsStore.Models.Domain.Customer">
+    <Position X="11.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAQAAgAGAAAAAAAAAABAAAQAgAABgAAAAAAAAgCAA=</HashCode>
+      <FileName>Models\Domain\Customer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SportsStore.Models.Domain.Order">
+    <Position X="7.75" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAQAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SportsStore.Models.Domain.Product">
+    <Position X="0.5" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAQAgAAAAgAAAAISAAAAAAIACAAABAAAACAA=</HashCode>
+      <FileName>Models\Domain\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
