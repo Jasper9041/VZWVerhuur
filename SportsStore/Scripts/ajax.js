@@ -1,11 +1,9 @@
 ﻿var view = {
     init: function() {
-        $(".categorieBtn").click(function () {
-            console.log("click");
+        $(".categorieBtn").click(function (event) {
             $(".categorieBtn").removeClass("active");
             $(this).addClass("active");
-            console.log(this);
-            $.post(this.action, $(this).serialize(),
+            $.post(this.action, {categoryId: event.target.value},
                 function(data) {
                     $("#producten").html(data);
                 });
